@@ -13,12 +13,12 @@ console.log(maxColor1.toString(16), maxColor2.toString(16)); //we can use the to
     Base 16 is hexadecimal
 */
 
- function newRandomColorLog() {
-     for(let i = 0; i < 3; i++){
-         //create random number * max color in hex, convert to hex, add '#'
-         const randomColor = '#' + Math.floor(Math.random() * maxColor1).toString(16);
-         //Console allows you to change the color of the log using the '%c' identifier + the CSS properties you want to apply
-        console.log(`%c My Hex is ${randomColor}`, `color: ${randomColor}; font-size: 14px;`);
+function newRandomColorLog() {
+    for (let i = 0; i < 3; i++) {
+        //create random number * max color in hex, convert to hex, add '#'
+        const randomColor = '#' + Math.floor(Math.random() * maxColor1).toString(16);
+        //Console allows you to change the color of the log using the '%c' identifier + the CSS properties you want to apply
+        console.log(`%c My Hex is %c${randomColor}`, `color: ${randomColor};`, `color: ${randomColor}; font-size: 14px; font-weight: bold;`);
     }
     console.log("____________") //just to seperate all the logs for better viewing
 };
@@ -45,7 +45,7 @@ const applyTaxes = function () {
     //create an empty array for output
     let returnArr = [];
     //loop through and push all item prices with tax now included
-    for(let item of allPricesWithTax) {
+    for (let item of allPricesWithTax) {
         returnArr.push((item * tax) + item)
     }
     // then return the new arr
@@ -72,9 +72,9 @@ void function callingAnotherFunction() {
 //CUSTOM FUNCTION PROPERTIES
 //You can add custom properties to functions, this is not normally seen but has its use cases
 function greetCustomer() {
-    if(greetCustomer.locale === 'de'){
+    if (greetCustomer.locale === 'de') {
         console.log('Guten tag, ein kumpel')
-    } else if (greetCustomer.locale === 'es'){
+    } else if (greetCustomer.locale === 'es') {
         console.log('Hola, mi amigo')
     } else console.log("Hello, my friend")
 }
@@ -106,9 +106,12 @@ console.log(+timestamp)
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Console.table
 //Ever console logging arrays? Another cool feature of js console obj is the console.table property
- let users = [
-    {name: "Zac Wilson", age: 34, cool: true},
-    {name: "JC Smiley", age: 21, cool: true},
-    {name: "Lawrence Lockhart", age: 21, cool: true},
-    {name: "Uncool Person", age: 88, cool: false},
+let zac = { name: "Zac Wilson", age: 34, cool: true }
+let users = [
+    zac,
+    { name: "JC Smiley", age: 21, cool: true },
+    { name: "Lawrence Lockhart", age: 21, cool: true },
+    { name: "Uncool Mean Person", age: 88, cool: false },
 ]
+// console.table(users);
+// console.table(users, ['name']);
