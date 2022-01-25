@@ -106,12 +106,81 @@ console.log(+timestamp)
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Console.table
 //Ever console logging arrays? Another cool feature of js console obj is the console.table property
-let zac = { name: "Zac Wilson", age: 34, cool: true }
+
 let users = [
-    zac,
+    { name: "Zac Wilson", age: 34, cool: true },
     { name: "JC Smiley", age: 21, cool: true },
     { name: "Lawrence Lockhart", age: 21, cool: true },
     { name: "Uncool Mean Person", age: 88, cool: false },
 ]
 // console.table(users);
 // console.table(users, ['name']);
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+//optional chaining
+
+let data = [
+    {
+        title: "Cool Article: Mars",
+        linked: {
+            title: "Elon Musk Article", 
+            article: {
+                published: true,
+                compositionDate: new Date(2022, 0, 25),
+                releaseDate: new Date(2022, 0, 25)
+            }
+        },
+        author: "Joe Shmoe"
+    },
+    {
+        title: "Which Crypto will moon?",
+        linked: {
+            title: "Some random coin astounding the globe",
+            article: {
+                published: false,
+                compositionDate: new Date(),
+            }
+        },
+        author: undefined
+    },
+    {
+        title: "Trending Tech News",
+        linked: {
+            title: "All things Tech",
+
+        },
+        author: "John Smith"
+    },
+]
+
+for(let e of data){
+    //Say we want to alert a user about a linked article only if it has been published
+
+    // console.log(
+    //     `the article by ${article.author} has a related article ${article.linked.title} 
+    //     that was released on ${article.linked.date.releaseDate}`
+    // )
+
+
+    // if(e.linked && e.linked.article){
+    //     console.log(
+    //         `the article by ${e.author} has a related article ${e.linked.title} 
+    //         that was composed on on ${e.linked.article.releaseDate}`
+    //     )
+    // }
+
+    // if(e.linked && e.linked.article && e.linked.article.published){
+    //     console.log(
+    //         `the article by ${e.author} has a related article ${e.linked.title} 
+    //         that was composed on on ${e.linked.article.releaseDate}`
+    //     )
+    // }
+
+    if(e.linked?.article?.published){
+        console.log(
+            `the article by ${e.author} has a related article ${e.linked.title} 
+            that was composed on on ${e.linked.article.releaseDate}`
+        )
+    }
+}
